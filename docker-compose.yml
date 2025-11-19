@@ -1,0 +1,68 @@
+services:
+    tsdb:
+        restart: always
+        image: timescale/timescaledb:latest-pg11
+        environment:
+            POSTGRES_PASSWORD: HelaGlobe2025
+        volumes:
+            - ./persistent/psql_db:/var/lib/postgresql/data
+            - ./postgres-custom.conf:/etc/postgresql/postgresql.conf
+        # ports:
+        #     - "5432:5432"
+        logging:
+            options:
+                max-size: "10m"
+                max-file: "3"
+    nginx:
+        restart: always
+        build: ./src/nginx
+        ports:
+        - 80:80
+        - 443:443
+        logging:
+            options:
+                max-size: "10m"
+                max-file: "3"
+
+        # volumes:
+        # - .htpasswd:/etc/nginx/.htpasswd
+        # - files-service-data:/resources
+    pgadmin:
+        restart: always
+        image: dpage/pgadmin4:8.14
+        environment:
+            PGADMIN_DEFAULT_EMAIL: admin@helaglobe.com
+            PGADMIN_DEFAULT_PASSWORD: HelaGlobe2025
+            PGADMIN_LISTEN_PORT: 5051
+            PGADMIN_CONFIG_CSRF_ENABLED: "False"
+        volumes:
+            - ./persistent/pgadmin_data:/root/.pgadmin
+            - ./src/pgadmin/servers.json:/pgadmin4/servers.json
+        # ports:
+            # - "5051:5051"
+        logging:
+            options:
+                max-size: "10m"
+                max-file: "3"
+
+    backend:
+        restart: always
+        ###################################################
+        build:
+            context: ./src/simple_backend/ 
+        environment:
+            ZFS_PATH: "/config"
+            Q_LOG_PATH: "/volumes"
+            LOG_LEVEL: "INFO"
+        logging:
+            options:
+                max-size: "10m"
+                max-file: "3"
+        # ports:
+        # - "8000:8000"
+        volumes:
+            - ./src/simple_backend/:/app/   
+            # - ./tslog/:/volumes
+        
+    
+

@@ -1,0 +1,6 @@
+asyncio==3.4.3
+fastapi==0.111.0
+sqlalchemy
+bcrypt==4.2.0
+psycopg2==2.9.9
+python-dateutil==2.8.2

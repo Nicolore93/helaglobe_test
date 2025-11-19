@@ -1,0 +1,16 @@
+# Ignore all contents of the data folder
+persistent/*
+noip-duc.env
+data
+persistent
+node-data
+node_modules
+redisauthdata
+psqlauthdata
+media
+certs
+custom-templates
+serv
+serv.pub
+serv.key
+
