@@ -12,7 +12,7 @@ La struttura è progettata per essere semplice, modulare e facilmente estendibil
 
 ---
 
-## 📁 **Struttura del progetto**
+## **Struttura del progetto**
 
 ```
 HELAGLOBE/
@@ -35,7 +35,7 @@ HELAGLOBE/
 
 ---
 
-## 🧱 **Prerequisiti**
+## **Prerequisiti**
 
 Per eseguire il progetto è necessario installare sul sistema:
 
@@ -63,7 +63,7 @@ python --version
 
 ---
 
-## 🚀 **Avvio dell’ambiente**
+## **Avvio dell’ambiente**
 
 Avviare tutti i servizi tramite Docker Compose:
 
@@ -85,7 +85,7 @@ docker compose up --build -d
 
 ---
 
-## 🧪 **Testare il backend**
+## **Testare il backend**
 
 È possibile generare automaticamente **sessioni riabilitative simulate** con:
 
@@ -96,13 +96,13 @@ python tester.py
 Lo script esegue:
 
 * generazione di ~10 utenti
-* creazione di 30–40 sessioni per ciascun utente
+* creazione di sessioni per ciascun utente
 * invio delle sessioni via POST al backend
 * verifica delle statistiche tramite `/users/{user_id}/stats`
 
 ---
 
-## 🗂️ **Database PostgreSQL + PgAdmin**
+## **Database PostgreSQL + PgAdmin**
 
 Il database viene creato automaticamente dal container.
 
@@ -114,7 +114,7 @@ PASS: HelaGlobe2025
 url: http://localhost/pgadmin
 ```
 
-## 🧹 **Pulizia dell’ambiente e Stop**
+## **Pulizia dell’ambiente e Stop**
 
 Arrestare i servizi:
 
